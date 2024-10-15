@@ -185,7 +185,9 @@ m.similarity_vs_exposure_test_talker_combinations <-
     formula = IsCorrect ~ 1 + sim_mean_max + Condition +
       (1 | WorkerID) + (1 | SentenceID / KeywordID) + (1 | TestTalkerID / ExposureTalkerID), 
     data = d.sim, 
-    family = binomial)
+    family = binomial, 
+    # Deal with convergence issues: better but slower optimizer
+    control = glmerControl(optimizer = c("bobyqa"))) 
 
 summary(m.similarity_vs_exposure_test_talker_combinations)
 anova(m.similarity_vs_exposure_test_talker_combinations, m.test_to_exposure_similarity)
