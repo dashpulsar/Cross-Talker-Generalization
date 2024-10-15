@@ -10,7 +10,11 @@ library(lme4)
 # LOADING DATA
 ## ---------------------------------------------------------------------
 d.sim <- 
+<<<<<<< HEAD
   read_excel("code/similarities_with_w2vacc.xlsx") %>%
+=======
+  read_excel("code/similarities.xlsx") %>%
+>>>>>>> 69a58f9 (Spelling out analyses to assess effects of similarity on listeners' transcription accuracy.)
   filter(
     Experiment == "1a",
     PartOfExp == "test") %>%
@@ -185,9 +189,13 @@ m.similarity_vs_exposure_test_talker_combinations <-
     formula = IsCorrect ~ 1 + sim_mean_max + Condition +
       (1 | WorkerID) + (1 | SentenceID / KeywordID) + (1 | TestTalkerID / ExposureTalkerID), 
     data = d.sim, 
+<<<<<<< HEAD
     family = binomial, 
     # Deal with convergence issues: better but slower optimizer
     control = glmerControl(optimizer = c("bobyqa"))) 
+=======
+    family = binomial)
+>>>>>>> 69a58f9 (Spelling out analyses to assess effects of similarity on listeners' transcription accuracy.)
 
 summary(m.similarity_vs_exposure_test_talker_combinations)
 anova(m.similarity_vs_exposure_test_talker_combinations, m.test_to_exposure_similarity)
