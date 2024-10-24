@@ -10,7 +10,7 @@ library(lme4)
 # LOADING DATA
 ## ---------------------------------------------------------------------
 d.sim <- 
-  read_excel("code/similarities.xlsx") %>%
+  read_excel("code/similarities_with_w2vacc.xlsx") %>%
   filter(
     Experiment == "1a",
     PartOfExp == "test") %>%
